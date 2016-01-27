@@ -49,7 +49,7 @@ void setup() {
 }
 
 void loop() {
-  delay(1000);
+  delay(10);
 
   Wire.beginTransmission(0x58);
   Wire.send(0x36);
