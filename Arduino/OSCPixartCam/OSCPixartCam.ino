@@ -63,9 +63,7 @@ void loop() {
   uint8_t data[16];
   for ( int i = 0; Wire.available() && i < 16; i++) {
     data[i] = Wire.read();
-    Serial.printf("%02X", data[i]);
   }
-  Serial.println();
 
   Serial.printf("{"
                 "\"blob1\":{\"X\":%d,\"Y\":%d,\"S\":%d},"
