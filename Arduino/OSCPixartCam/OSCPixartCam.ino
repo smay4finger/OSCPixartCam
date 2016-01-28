@@ -30,22 +30,26 @@ void setup() {
   Wire.send(0x00);
   Wire.send(0x41);
   Wire.endTransmission();
+  delay(100);
   
   Wire.beginTransmission(0x58);
   Wire.send(0x1A); // sensititity block 2
   Wire.send(0x40);
   Wire.send(0x00);
   Wire.endTransmission();
+  delay(100);
 
   Wire.beginTransmission(0x58);
   Wire.send(0x30); // control
   Wire.send(0x08);
   Wire.endTransmission();
+  delay(100);
 
   Wire.beginTransmission(0x58);
   Wire.send(0x33); // mode
   Wire.send(0x03);
   Wire.endTransmission();
+  delay(100);
 }
 
 void loop() {
