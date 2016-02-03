@@ -57,6 +57,7 @@ public void createUI() {
     .setValue(8000)
     .setRange(1, 65535)
     .setDecimalPrecision(0)
+    .setScrollSensitivity(1.0)
     ;
   uiConnectOSC = cp5.addButton("uiConnectOSC")
     .setPosition(160, 25)
