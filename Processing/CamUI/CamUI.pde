@@ -77,7 +77,7 @@ void draw() {
   fill(255,255,0);
   ellipse(
     cam1BlobX / 1024.0 * width,
-    cam1BlobY / 768.0 * height,
+    height - (cam1BlobY / 768.0 * height),
     cam2BlobX / 1024.0 * width, 
     cam2BlobX / 1024.0 * width);
 
