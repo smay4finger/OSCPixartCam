@@ -4,6 +4,7 @@ Textfield uiHostnameOSC;
 Numberbox uiPortOSC;
 Button uiConnectOSC;
 ScrollableList uiSelectedSerialPort;
+public ScrollableList uiCamNumber;
 Button uiConnectSerialPort;
 
 Slider uiBlob1X;
@@ -83,6 +84,17 @@ public void createUI() {
     .setLabel("connect")
     .setSwitch(true)
     ;
+  
+  uiCamNumber = cp5.addScrollableList("Cam number")
+    .addItems(Arrays.asList("1", "2", "3"))
+    .setPosition(5, 75)
+    .setSize(120, 100)
+    .setBarHeight(20)
+    .setItemHeight(20)
+    .onEnter(toFront)
+    .onLeave(close)
+    .setValue(0)
+    .close();
 
   cp5.addFrameRate()
     .setInterval(10)

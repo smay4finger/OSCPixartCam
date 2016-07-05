@@ -23,12 +23,8 @@ void oscDisconnect() {
 }
 
 void oscUpdate() {
-  if (oscClient != null) {
-    
-    oscClient.send("/cam/blob1", new Object[] { camBlob1X, camBlob1Y, camBlob1Size });
-    oscClient.send("/cam/blob2", new Object[] { camBlob2X, camBlob2Y, camBlob2Size });
-    oscClient.send("/cam/blob3", new Object[] { camBlob3X, camBlob3Y, camBlob3Size });
-    oscClient.send("/cam/blob4", new Object[] { camBlob4X, camBlob4Y, camBlob4Size });
+  if (oscClient != null) {   
+    oscClient.send("/cam" + uiCamNumber.getStringValue() + "/blob", new Object[] { camBlobX, camBlobY });
   }
 }
 
