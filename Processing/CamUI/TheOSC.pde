@@ -22,9 +22,22 @@ void oscDisconnect() {
   }
 }
 
+static int oldX;
+static int oldY;
+static int oldZ;
+
 void oscUpdate() {
-  if (oscClient != null) {   
-    oscClient.send("/cam/blob", new Object[] { cam1BlobX, cam1BlobY, cam2BlobX });
+  if (oscClient != null) {
+    if (cam1BlobX > (oldX+uiDiff.getValue())
+        || cam1BlobX < (oldX-uiDiff.getValue())
+        || cam1BlobY > (oldY+uiDiff.getValue())
+        || cam1BlobY < (oldY-uiDiff.getValue())
+        || cam2BlobX > (oldZ+uiDiff.getValue())
+        || cam2BlobX < (oldZ-uiDiff.getValue()))
+      oscClient.send("/cam/blob", new Object[] { cam1BlobX, cam1BlobY, cam2BlobX });
+      oldX = cam1BlobX;
+      oldY = cam1BlobY;
+      oldZ = cam2BlobX;
   }
 }
 

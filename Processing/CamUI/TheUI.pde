@@ -40,6 +40,8 @@ Slider uiBlob8X;
 Slider uiBlob8Y;
 Slider uiBlob8Size;
 
+public Slider uiDiff;
+
 public void createUI() {
 
   cp5 = new ControlP5(this);
@@ -58,7 +60,9 @@ public void createUI() {
   };
 
   cp5.addTab("default");
+  cp5.addTab("settings");
   cp5.addTab("raw cam1");
+  cp5.addTab("raw cam2");
 
   uiHostnameOSC = cp5.addTextfield("uiHostnameOSC")
     .setPosition(5, 25)
@@ -117,6 +121,14 @@ public void createUI() {
     .setLabel("connect cam2")
     .setSwitch(true)
     ;
+    
+    
+  uiDiff = cp5.addSlider("Diff")
+    .setPosition(5, 25)
+    .setSize(150, 12)
+    .setRange(0, 5)
+    .setValue(0.5)
+    .moveTo("settings");
     
   cp5.addFrameRate()
     .setInterval(10)
