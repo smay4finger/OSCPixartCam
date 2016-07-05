@@ -13,10 +13,20 @@ void setup() {
 
   Wire.begin();
 
+delay(20);
+
   Wire.beginTransmission(0x58);
   Wire.send(0x30); // control
   Wire.send(0x01);
-  Wire.endTransmission();
+  switch(Wire.endTransmission()) {
+    case 0: break;
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      Serial.println("Error1!");
+      for(;;);
+  }
 
   Wire.beginTransmission(0x58);
   Wire.send(0x00); // sensitivity block 1
@@ -29,7 +39,14 @@ void setup() {
   Wire.send(0x90);
   Wire.send(0x00);
   Wire.send(0x41);
-  Wire.endTransmission();
+  switch(Wire.endTransmission()) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      Serial.println("Error2!");
+      for(;;);
+  }
   delay(100);
   
   Wire.beginTransmission(0x58);
@@ -50,6 +67,8 @@ void setup() {
   Wire.send(0x03);
   Wire.endTransmission();
   delay(100);
+
+  delay(2000);
 }
 
 void loop() {
