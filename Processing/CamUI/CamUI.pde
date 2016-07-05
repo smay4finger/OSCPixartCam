@@ -21,40 +21,66 @@ void draw() {
 
   background(128);
 
-  fill(255,255,255);
-
-  ellipse(
-    camBlob4X / 1024.0 * width, 
-    camBlob4Y / 768.0 * height, 
-    camBlob4Size * 10 + 10,
-    camBlob4Size * 10 + 10);
-
-  ellipse(
-    camBlob3X / 1024.0 * width, 
-    camBlob3Y / 768.0 * height, 
-    camBlob3Size * 10 + 10,
-    camBlob3Size * 10 + 10);
-
-  ellipse(
-    camBlob2X / 1024.0 * width, 
-    camBlob2Y / 768.0 * height, 
-    camBlob2Size * 10 + 10,
-    camBlob2Size * 10 + 10);
-
-  fill(255,0,0);
-
-  ellipse(
-    camBlob1X / 1024.0 * width, 
-    camBlob1Y / 768.0 * height, 
-    camBlob1Size * 10 + 10,
-    camBlob1Size * 10 + 10);
-
-  fill(255,255,0);
+  if (showRaw) {
+    fill(255,0,0);
   
+    ellipse(
+      cam1Blob4X / 1024.0 * width, 
+      cam1Blob4Y / 768.0 * height, 
+      cam1Blob4Size * 10 + 10,
+      cam1Blob4Size * 10 + 10);
+  
+    ellipse(
+      cam1Blob3X / 1024.0 * width, 
+      cam1Blob3Y / 768.0 * height, 
+      cam1Blob3Size * 10 + 10,
+      cam1Blob3Size * 10 + 10);
+  
+    ellipse(
+      cam1Blob2X / 1024.0 * width, 
+      cam1Blob2Y / 768.0 * height, 
+      cam1Blob2Size * 10 + 10,
+      cam1Blob2Size * 10 + 10);
+      
+    ellipse(
+      cam1Blob1X / 1024.0 * width, 
+      cam1Blob1Y / 768.0 * height, 
+      cam1Blob1Size * 10 + 10,
+      cam1Blob1Size * 10 + 10);
+  
+    fill(0,0,255);
+  
+    ellipse(
+      cam2Blob4X / 1024.0 * width, 
+      cam2Blob4Y / 768.0 * height, 
+      cam2Blob4Size * 10 + 10,
+      cam2Blob4Size * 10 + 10);
+  
+    ellipse(
+      cam2Blob3X / 1024.0 * width, 
+      cam2Blob3Y / 768.0 * height, 
+      cam2Blob3Size * 10 + 10,
+      cam2Blob3Size * 10 + 10);
+  
+    ellipse(
+      cam2Blob2X / 1024.0 * width, 
+      cam2Blob2Y / 768.0 * height, 
+      cam2Blob2Size * 10 + 10,
+      cam2Blob2Size * 10 + 10);
+      
+    ellipse(
+      cam2Blob1X / 1024.0 * width, 
+      cam2Blob1Y / 768.0 * height, 
+      cam2Blob1Size * 10 + 10,
+      cam2Blob1Size * 10 + 10);
+  }
+  
+  fill(255,255,0);
   ellipse(
-    camBlobX / 1024.0 * width,
-    camBlobY / 768.0 * height,
-    20, 20);
+    cam1BlobX / 1024.0 * width,
+    cam1BlobY / 768.0 * height,
+    cam2BlobX / 1024.0 * width, 
+    cam2BlobX / 1024.0 * width);
 
   popMatrix();
   hint(DISABLE_DEPTH_TEST);

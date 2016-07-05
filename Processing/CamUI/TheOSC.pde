@@ -24,7 +24,7 @@ void oscDisconnect() {
 
 void oscUpdate() {
   if (oscClient != null) {   
-    oscClient.send("/cam" + uiCamNumber.getStringValue() + "/blob", new Object[] { camBlobX, camBlobY });
+    oscClient.send("/cam/blob", new Object[] { cam1BlobX, cam1BlobY, cam2BlobX });
   }
 }
 
