@@ -12,8 +12,7 @@ void setup() {
   createUI();
 }
 
-static float x = 512.0;
-static float y = 768.0 / 2.0;
+final boolean showRaw = false;
 
 void draw() {
   hint(ENABLE_DEPTH_TEST);
