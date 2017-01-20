@@ -8,9 +8,6 @@ void cam_send(uint8_t byte1, uint8_t byte2) {
 }
 
 void setup() {
-  Serial.begin(9600);
-  while (!Serial);
-
   Wire.begin(I2C_MASTER, 0, I2C_PINS_18_19, I2C_PULLUP_INT, I2C_RATE_2000);
 
 setup_again:
@@ -20,7 +17,6 @@ setup_again:
   Wire.send(0x30); // control
   Wire.send(0x01);
   if (Wire.endTransmission() != 0) {
-    Serial.println("Error1!");
     goto setup_again;
   }
 
@@ -36,7 +32,6 @@ setup_again:
   Wire.send(0x00);
   Wire.send(0x41);
   if (Wire.endTransmission() != 0) {
-    Serial.println("Error2!");
     goto setup_again;
   }
   delay(100);
@@ -46,7 +41,6 @@ setup_again:
   Wire.send(0x40);
   Wire.send(0x00);
   if (Wire.endTransmission() != 0) {
-    Serial.println("Error3!");
     goto setup_again;
   }
   delay(100);
@@ -55,7 +49,6 @@ setup_again:
   Wire.send(0x30); // control
   Wire.send(0x08);
   if (Wire.endTransmission() != 0) {
-    Serial.println("Error4!");
     goto setup_again;
   }
   delay(100);
@@ -64,10 +57,12 @@ setup_again:
   Wire.send(0x33); // mode
   Wire.send(0x03);
   if (Wire.endTransmission() != 0) {
-    Serial.println("Error5!");
     goto setup_again;
   }
   delay(100);
+
+  Serial.begin(9600);
+  while (!Serial);
 }
 
 void loop() {
