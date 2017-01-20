@@ -1,4 +1,4 @@
-#include <Wire.h>
+#include <i2c_t3.h>
 
 void cam_send(uint8_t byte1, uint8_t byte2) {
   Wire.beginTransmission(0x58);
@@ -11,7 +11,7 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-  Wire.begin();
+  Wire.begin(I2C_MASTER, 0, I2C_PINS_18_19, I2C_PULLUP_INT, I2C_RATE_2000);
 
 delay(20);
 
