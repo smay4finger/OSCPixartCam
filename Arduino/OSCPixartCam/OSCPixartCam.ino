@@ -10,8 +10,11 @@ void cam_send(uint8_t byte1, uint8_t byte2) {
 void setup() {
   Wire.begin(I2C_MASTER, 0, I2C_PINS_18_19, I2C_PULLUP_INT, I2C_RATE_2000);
 
+  pinMode(13, OUTPUT);
+
 setup_again:
-  delay(1000);
+  delay(100);
+  digitalWrite(13, !digitalRead(13));
 
   Wire.beginTransmission(0x58);
   Wire.send(0x30); // control
@@ -60,6 +63,9 @@ setup_again:
     goto setup_again;
   }
   delay(100);
+
+  // turn off LED
+  digitalWrite(13, LOW);
 
   Serial.begin(9600);
   while (!Serial);
