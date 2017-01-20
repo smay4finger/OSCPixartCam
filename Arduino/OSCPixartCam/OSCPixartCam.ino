@@ -13,19 +13,15 @@ void setup() {
 
   Wire.begin(I2C_MASTER, 0, I2C_PINS_18_19, I2C_PULLUP_INT, I2C_RATE_2000);
 
-delay(20);
+setup_again:
+  delay(1000);
 
   Wire.beginTransmission(0x58);
   Wire.send(0x30); // control
   Wire.send(0x01);
-  switch(Wire.endTransmission()) {
-    case 0: break;
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-      Serial.println("Error1!");
-      for(;;);
+  if (Wire.endTransmission() != 0) {
+    Serial.println("Error1!");
+    goto setup_again;
   }
 
   Wire.beginTransmission(0x58);
@@ -39,39 +35,43 @@ delay(20);
   Wire.send(0x90);
   Wire.send(0x00);
   Wire.send(0x41);
-  switch(Wire.endTransmission()) {
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-      Serial.println("Error2!");
-      for(;;);
+  if (Wire.endTransmission() != 0) {
+    Serial.println("Error2!");
+    goto setup_again;
   }
   delay(100);
-  
+
   Wire.beginTransmission(0x58);
   Wire.send(0x1A); // sensititity block 2
   Wire.send(0x40);
   Wire.send(0x00);
-  Wire.endTransmission();
+  if (Wire.endTransmission() != 0) {
+    Serial.println("Error3!");
+    goto setup_again;
+  }
   delay(100);
 
   Wire.beginTransmission(0x58);
   Wire.send(0x30); // control
   Wire.send(0x08);
-  Wire.endTransmission();
+  if (Wire.endTransmission() != 0) {
+    Serial.println("Error4!");
+    goto setup_again;
+  }
   delay(100);
 
   Wire.beginTransmission(0x58);
   Wire.send(0x33); // mode
   Wire.send(0x03);
-  Wire.endTransmission();
+  if (Wire.endTransmission() != 0) {
+    Serial.println("Error5!");
+    goto setup_again;
+  }
   delay(100);
-
-  delay(2000);
 }
 
 void loop() {
+  // change data rate here!!!
   delay(10);
 
   Wire.beginTransmission(0x58);
